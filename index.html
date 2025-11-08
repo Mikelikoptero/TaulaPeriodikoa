@@ -987,6 +987,47 @@ body{margin:0;font-family:Segoe UI, Roboto, Helvetica, Arial, sans-serif;backgro
   box-shadow: 0 2px 6px rgba(58,121,94,0.3);
 }
 
+/* NUEVO: Botón Balentziak */
+.btn-balents {
+  background: #0a0a0a !important;
+  border: 2px solid #3A795E !important;
+  color: #3A795E !important;
+  padding: 10px 16px !important;
+  border-radius: 8px;
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  margin: 15px auto !important; /* Cambiado: auto en los lados para centrar */
+  width: auto !important;
+  min-width: 140px;
+  box-shadow: 0 2px 8px rgba(58,121,94,0.2);
+}
+
+.btn-balents:hover {
+  background: #3A795E !important; /* Fondo verde al hover */
+  color: #0a0a0a !important; /* Texto negro al hover */
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(58,121,94,0.4);
+}
+
+.btn-balents:active {
+  transform: translateY(0);
+  box-shadow: 0 2px 6px rgba(58,121,94,0.3);
+}
+
+/* NUEVO: Contenedor para botones */
+.button-container {
+  display: flex;
+  gap: 10px;
+  justify-content: center;
+  margin-bottom: 15px;
+}
+
 /* NUEVO: Estilos para la ventana 3D */
 .modal-3d {
   display: none;
@@ -1259,10 +1300,15 @@ body{margin:0;font-family:Segoe UI, Roboto, Helvetica, Arial, sans-serif;backgro
     <h1>Taula periodikoa — Informazioa</h1>
     <p>Hautatu elementu bat taulan klik eginez.</p>
 
-    <!-- NUEVO: Botón 3D -->
-    <button class="btn-3d" id="btn3D">
-      <span>3D Orbitalak</span>
-    </button>
+    <!-- NUEVO: Contenedor para botones 3D y Balentziak -->
+    <div class="button-container">
+      <button class="btn-3d" id="btn3D">
+        <span>3D Orbitalak</span>
+      </button>
+      <button class="btn-balents" id="btnBalents">
+        <span>Balentziak</span>
+      </button>
+    </div>
 
     <!-- Leyenda para bloques electrónicos - MODIFICADA: Con botón de toggle integrado -->
     <div class="elec-legend" id="elecLegend">
@@ -1799,6 +1845,9 @@ const orbitalButtons = document.querySelectorAll('.modal-3d-orbital-btn');
 // NUEVO: Referencias para los menús retráctiles
 const categoryHeaders = document.querySelectorAll('.modal-3d-category-header');
 
+// NUEVO: Referencia para el botón Balentziak
+const btnBalents = document.getElementById('btnBalents');
+
 // Store all cell elements for highlighting
 let allCells = [];
 let groupLabels = [];
@@ -2138,6 +2187,11 @@ orbitalButtons.forEach(button => {
     const modelName = button.dataset.model;
     loadOrbitalModel(modelName);
   });
+});
+
+// NUEVO: Event listener para el botón Balentziak
+btnBalents.addEventListener('click', () => {
+  window.open('https://mikelikoptero.github.io/Balentzien-Taula/', '_blank');
 });
 
 // El resto del código permanece igual...
@@ -2912,5 +2966,4 @@ updateZoom();
 toggleTrendArrows(false);
 </script>
 </body>
-
 </html>
