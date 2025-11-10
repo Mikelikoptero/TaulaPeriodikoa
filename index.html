@@ -1300,7 +1300,7 @@ body{margin:0;font-family:Segoe UI, Roboto, Helvetica, Arial, sans-serif;backgro
     <h1>Taula periodikoa — Informazioa</h1>
     <p>Hautatu elementu bat taulan klik eginez.</p>
 
-    <!-- NUEVO: Contenedor para botones 3D y Balentziak -->
+    <!-- Contenedor para botones 3D y Balentziak -->
     <div class="button-container">
       <button class="btn-3d" id="btn3D">
         <span>3D Orbitalak</span>
@@ -1308,6 +1308,34 @@ body{margin:0;font-family:Segoe UI, Roboto, Helvetica, Arial, sans-serif;backgro
       <button class="btn-balents" id="btnBalents">
         <span>Balentziak</span>
       </button>
+    </div>
+
+    <!-- Información del elemento seleccionado -->
+    <div class="card">
+      <div class="info-head">
+        <div class="info-left">
+          <div id="iconSquare" class="big-square" style="background:#111111">—</div>
+          <div>
+            <div id="titleMain" style="font-size:20px;font-weight:700">Aukeratu elementu bat</div>
+            <div id="subtitle" class="small-muted">Z = —</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="info-rows">
+        <div><b>Zenbaki atomikoa:</b> <span id="iz">—</span></div>
+        <div><b>Masa molarra (u):</b> <span id="imass">—</span></div>
+        <div><b>Balentziak:</b> <span id="ival">—</span></div>
+        <div><b>Konfigurazio elektronikoa:</b> <span id="iconfig">—</span></div>
+        <!-- Línea para electronegatividad -->
+        <div><b>Elektronegatibitatea:</b> <span id="ielectroneg">—</span></div>
+        <!-- Línea para el radio atómico -->
+        <div><b>Erradio atomikoa (pm):</b> <span id="iradius">—</span></div>
+        <!-- Línea para ionizazio energia -->
+        <div><b>Ionizazio energia (kJ/mol):</b> <span id="iionization">—</span></div>
+      </div>
+
+      <div class="footer">Taula periodikoko datu orokorrak.</div>
     </div>
 
     <!-- Leyenda para bloques electrónicos - MODIFICADA: Con botón de toggle integrado -->
@@ -1336,7 +1364,7 @@ body{margin:0;font-family:Segoe UI, Roboto, Helvetica, Arial, sans-serif;backgro
       </div>
     </div>
 
-    <!-- NUEVO: Pestaña retráctil para propiedades -->
+    <!-- Pestaña retráctil para propiedades -->
     <div class="properties-toggle" id="propertiesToggle">
       <div class="properties-header">
         <div class="properties-title">Propietateak</div>
@@ -1384,7 +1412,7 @@ body{margin:0;font-family:Segoe UI, Roboto, Helvetica, Arial, sans-serif;backgro
             </div>
           </div>
 
-          <!-- NUEVO: Leyenda para Ionizazio Energia -->
+          <!-- Leyenda para Ionizazio Energia -->
           <div class="ionization-legend" id="ionizationLegend">
             <div class="ionization-legend-header">
               <div class="ionization-legend-title">
@@ -1406,33 +1434,6 @@ body{margin:0;font-family:Segoe UI, Roboto, Helvetica, Arial, sans-serif;backgro
         </div>
       </div>
     </div>
-
-    <div class="card">
-      <div class="info-head">
-        <div class="info-left">
-          <div id="iconSquare" class="big-square" style="background:#111111">—</div>
-          <div>
-            <div id="titleMain" style="font-size:20px;font-weight:700">Aukeratu elementu bat</div>
-            <div id="subtitle" class="small-muted">Z = —</div>
-          </div>
-        </div>
-      </div>
-
-      <div class="info-rows">
-        <div><b>Zenbaki atomikoa:</b> <span id="iz">—</span></div>
-        <div><b>Masa molarra (u):</b> <span id="imass">—</span></div>
-        <div><b>Balentziak:</b> <span id="ival">—</span></div>
-        <div><b>Konfigurazio elektronikoa:</b> <span id="iconfig">—</span></div>
-        <!-- Línea para electronegatividad -->
-        <div><b>Elektronegatibitatea:</b> <span id="ielectroneg">—</span></div>
-        <!-- Línea para el radio atómico -->
-        <div><b>Erradio atomikoa (pm):</b> <span id="iradius">—</span></div>
-        <!-- NUEVO: Línea para ionizazio energia -->
-        <div><b>Ionizazio energia (kJ/mol):</b> <span id="iionization">—</span></div>
-      </div>
-
-      <div class="footer">Taula periodikoko datu orokorrak.</div>
-    </div>
   </aside>
 
   <main class="container">
@@ -1442,7 +1443,7 @@ body{margin:0;font-family:Segoe UI, Roboto, Helvetica, Arial, sans-serif;backgro
     </div>
 
     <div class="table-complete-wrapper">
-      <!-- NUEVO: Contenedor para flechas de tendencia -->
+      <!-- Contenedor para flechas de tendencia -->
       <div class="trend-arrows" id="trendArrows">
         <!-- Flechas para radio atómico (verdes) -->
         <!-- Flecha vertical (H → Fr) - CORREGIDA: Desde H hasta Fr -->
@@ -1507,7 +1508,7 @@ body{margin:0;font-family:Segoe UI, Roboto, Helvetica, Arial, sans-serif;backgro
         <div class="trend-arrow electroneg left" style="left: 1320px; top: 30px;">↓</div>
         <div class="trend-arrow electroneg left" style="left: 1400px; top: 30px;">↓</div>
         
-        <!-- NUEVO: Flechas para ionizazio energia (rojas) - Misma dirección que electronegatividad -->
+        <!-- Flechas para ionizazio energia (rojas) - Misma dirección que electronegatividad -->
         <!-- Flecha vertical (Fr → F) - Aumenta hacia arriba -->
         <div class="trend-arrow ionization up" style="left: 40px; top: 600px;">↓</div>
         <div class="trend-arrow ionization up" style="left: 40px; top: 520px;">↓</div>
@@ -1584,7 +1585,7 @@ body{margin:0;font-family:Segoe UI, Roboto, Helvetica, Arial, sans-serif;backgro
   </main>
 </div>
 
-<!-- NUEVO: Ventana modal para visualización 3D con menús retráctiles -->
+<!-- Ventana modal para visualización 3D con menús retráctiles -->
 <div class="modal-3d" id="modal3D">
   <div class="modal-3d-content">
     <div class="modal-3d-sidebar">
@@ -1829,7 +1830,7 @@ const radiusTitle = document.querySelector('.radius-legend-title');
 const electronegTitle = document.querySelector('.electroneg-legend-title');
 const ionizationTitle = document.querySelector('.ionization-legend-title');
 
-// NUEVO: Referencias para la funcionalidad 3D
+// Referencias para la funcionalidad 3D
 const btn3D = document.getElementById('btn3D');
 const modal3D = document.getElementById('modal3D');
 const modal3DClose = document.getElementById('modal3DClose');
@@ -1842,10 +1843,10 @@ const resetView = document.getElementById('resetView');
 const autoRotate = document.getElementById('autoRotate');
 const orbitalButtons = document.querySelectorAll('.modal-3d-orbital-btn');
 
-// NUEVO: Referencias para los menús retráctiles
+// Referencias para los menús retráctiles
 const categoryHeaders = document.querySelectorAll('.modal-3d-category-header');
 
-// NUEVO: Referencia para el botón Balentziak
+// Referencia para el botón Balentziak
 const btnBalents = document.getElementById('btnBalents');
 
 // Store all cell elements for highlighting
@@ -1857,13 +1858,13 @@ let isElectronegMode = false;
 let isRadiusMode = false;
 let isIonizationMode = false;
 
-// NUEVO: Variables para la funcionalidad 3D
+// Variables para la funcionalidad 3D
 let currentModel = null;
 let isAutoRotating = false;
 let scene, camera, renderer, controls;
 let orbitalModels = {};
 
-// NUEVO: Información sobre los orbitales
+// Información sobre los orbitales
 const orbitalInfo = {
   's': {
     title: 's Orbitala',
@@ -1935,7 +1936,7 @@ const orbitalInfo = {
   }
 };
 
-// NUEVO: Función para manejar los menús retráctiles
+// Función para manejar los menús retráctiles
 function initCollapsibleMenus() {
   categoryHeaders.forEach(header => {
     header.addEventListener('click', function() {
@@ -1945,7 +1946,7 @@ function initCollapsibleMenus() {
   });
 }
 
-// NUEVO: Inicializar el visualizador 3D
+// Inicializar el visualizador 3D
 function init3DViewer() {
   // Crear escena
   scene = new THREE.Scene();
@@ -2003,7 +2004,7 @@ function init3DViewer() {
   });
 }
 
-// NUEVO: Cargar modelo 3D
+// Cargar modelo 3D
 function loadOrbitalModel(modelName) {
   // Mostrar carga
   loading3D.style.display = 'block';
@@ -2068,7 +2069,7 @@ function loadOrbitalModel(modelName) {
   );
 }
 
-// NUEVO: Crear representación alternativa si falla la carga del modelo
+// Crear representación alternativa si falla la carga del modelo
 function createAlternativeRepresentation(modelName) {
   loading3D.style.display = 'none';
   info3D.style.display = 'block';
@@ -2139,7 +2140,7 @@ function createAlternativeRepresentation(modelName) {
   updateOrbitalInfo(modelName);
 }
 
-// NUEVO: Actualizar información del orbital
+// Actualizar información del orbital
 function updateOrbitalInfo(modelName) {
   const info = orbitalInfo[modelName] || {
     title: `${modelName} Orbitala`,
@@ -2150,7 +2151,7 @@ function updateOrbitalInfo(modelName) {
   infoDesc.textContent = info.desc;
 }
 
-// NUEVO: Event listeners para la funcionalidad 3D
+// Event listeners para la funcionalidad 3D
 btn3D.addEventListener('click', () => {
   modal3D.classList.add('active');
   // Inicializar el visualizador si es la primera vez
@@ -2189,13 +2190,10 @@ orbitalButtons.forEach(button => {
   });
 });
 
-// NUEVO: Event listener para el botón Balentziak
+// Event listener para el botón Balentziak
 btnBalents.addEventListener('click', () => {
   window.open('https://mikelikoptero.github.io/Balentzien-Taula/', '_blank');
 });
-
-// El resto del código permanece igual...
-// (manteniendo todas las funciones originales de la tabla periódica)
 
 // Función para mostrar/ocultar las flechas de tendencia
 function toggleTrendArrows(show, type) {
@@ -2234,7 +2232,7 @@ electronegTitle.addEventListener('mouseleave', () => {
   toggleTrendArrows(false);
 });
 
-// NUEVO: Event listeners para las flechas de tendencia de la ionizazio energia
+// Event listeners para las flechas de tendencia de la ionizazio energia
 ionizationTitle.addEventListener('mouseenter', () => {
   toggleTrendArrows(true, 'ionization');
 });
@@ -2407,7 +2405,7 @@ function applyAtomicRadiusColors() {
   isRadiusMode = true;
 }
 
-// NUEVO: Función para calcular el color basado en la ionizazio energia
+// Función para calcular el color basado en la ionizazio energia
 function getIonizationColor(ionization, minIonization, maxIonization) {
   if (ionization === 0) return '#ffe6e6'; // Color por defecto para datos faltantes
   
@@ -2422,7 +2420,7 @@ function getIonizationColor(ionization, minIonization, maxIonization) {
   return `hsl(${hue}, ${saturation}%, ${lightness}%)`;
 }
 
-// NUEVO: Función para aplicar colores por ionizazio energia
+// Función para aplicar colores por ionizazio energia
 function applyIonizationColors() {
   // Encontrar ionizazio energias mínimas y máximas
   let minIonization = Infinity;
@@ -2601,7 +2599,7 @@ radiusToggleBtn.addEventListener('click', function(e) {
   }
 });
 
-// NUEVO: Event listener para el botón de toggle de ionizazio energia
+// Event listener para el botón de toggle de ionizazio energia
 ionizationToggleBtn.addEventListener('click', function(e) {
   e.stopPropagation(); // Prevenir que el evento se propague al contenedor de propiedades
   if (isIonizationMode) {
@@ -2943,7 +2941,7 @@ function show(el,cell){
     radiusDisplay.textContent = 'Ezezaguna';
   }
   
-  // NUEVO: Mostrar ionizazio energia
+  // Mostrar ionizazio energia
   const ionizationDisplay = document.getElementById('iionization');
   if (el.ionization && el.ionization > 0) {
     ionizationDisplay.textContent = el.ionization + ' kJ/mol';
