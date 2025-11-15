@@ -2316,5 +2316,34 @@ updateZoom();
 // Ocultar todas las flechas inicialmente
 toggleTrendArrows(false);
 </script>
+  
+<script>
+/* ---------- AUTO-SCALE PARA CUALQUIER PANTALLA ---------- */
+function autoFitTable() {
+  const wrapper = document.querySelector('.table-complete-wrapper');
+  const container = document.querySelector('.container');
+  if (!wrapper || !container) return;
+
+  const naturalW = wrapper.scrollWidth;
+  const naturalH = wrapper.scrollHeight;
+
+  const availW = container.clientWidth - 40;
+  const availH = container.clientHeight - 120;
+
+  const scaleW = availW / naturalW;
+  const scaleH = availH / naturalH;
+  const scale = Math.min(scaleW, scaleH, 1.4);
+
+  wrapper.style.transform = `scale(${scale})`;
+  wrapper.style.transformOrigin = 'top left';
+
+  const zoomDisplay = document.getElementById('zoomLevel');
+  if (zoomDisplay) zoomDisplay.textContent = Math.round(scale * 100) + '%';
+}
+
+autoFitTable();
+window.addEventListener('resize', autoFitTable);
+</script>
 </body>
 </html>
+
