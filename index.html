@@ -2318,13 +2318,13 @@ toggleTrendArrows(false);
 </script>
   
 <script>
-/* ---------- AUTO-SCALE PARA CUALQUIER PANTALLA ---------- */
+/* ---------- AUTO-SCALE CON LÍMITE MÍNIMO ---------- */
 function autoFitTable() {
   const wrapper = document.querySelector('.table-complete-wrapper');
   const container = document.querySelector('.container');
   if (!wrapper || !container) return;
 
-  const naturalW = wrapper.scrollWidth;
+  const naturalW = wrapper.scrollWidth;   // ancho "natural"
   const naturalH = wrapper.scrollHeight;
 
   const availW = container.clientWidth - 40;
@@ -2332,13 +2332,16 @@ function autoFitTable() {
 
   const scaleW = availW / naturalW;
   const scaleH = availH / naturalH;
-  const scale = Math.min(scaleW, scaleH, 1.4);
 
-  wrapper.style.transform = `scale(${scale})`;
+  // 🔒 NO permitimos que se vea más pequeña que el 80 % del tamaño original
+  const scale = Math.min(scaleW, scaleH, 1.4);
+  const finalScale = Math.max(scale, 0.75);   // 👈 línea clave
+
+  wrapper.style.transform = `scale(${finalScale})`;
   wrapper.style.transformOrigin = 'top left';
 
   const zoomDisplay = document.getElementById('zoomLevel');
-  if (zoomDisplay) zoomDisplay.textContent = Math.round(scale * 100) + '%';
+  if (zoomDisplay) zoomDisplay.textContent = Math.round(finalScale * 100) + '%';
 }
 
 autoFitTable();
@@ -2346,4 +2349,5 @@ window.addEventListener('resize', autoFitTable);
 </script>
 </body>
 </html>
+
 
