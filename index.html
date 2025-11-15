@@ -2316,26 +2316,25 @@ updateZoom();
 // Ocultar todas las flechas inicialmente
 toggleTrendArrows(false);
 </script>
-  
 <script>
-/* ---------- AUTO-SCALE CON LÍMITE MÍNIMO ---------- */
-function autoFitTable() {
+/* ---------- ZOOM + AUTO-FIT JUNTOS ---------- */
+let userZoom = 1;                 // zoom relativo elegido por el usuario (1 = normal)
+
+function applyZoom() {
   const wrapper = document.querySelector('.table-complete-wrapper');
   const container = document.querySelector('.container');
   if (!wrapper || !container) return;
 
-  const naturalW = wrapper.scrollWidth;   // ancho "natural"
+  // 1. escala base para que quepa
+  const naturalW = wrapper.scrollWidth;
   const naturalH = wrapper.scrollHeight;
-
-  const availW = container.clientWidth - 40;
-  const availH = container.clientHeight - 120;
-
-  const scaleW = availW / naturalW;
-  const scaleH = availH / naturalH;
-
-  // 🔒 NO permitimos que se vea más pequeña que el 80 % del tamaño original
-  const scale = Math.min(scaleW, scaleH, 1.4);
-  const finalScale = Math.max(scale, 0.75);   // 👈 línea clave
+  const availW   = container.clientWidth  - 40;
+  const availH   = container.clientHeight - 120;
+  const scaleW   = availW / naturalW;
+  const scaleH   = availH / naturalH;
+  const base     = Math.min(scaleW, scaleH, 1.4);
+  const minBase  = Math.max(base, 0.75);   // <-- tu mínimo
+  const finalScale = minBase * userZoom;   // <-- mezclamos ambas escalas
 
   wrapper.style.transform = `scale(${finalScale})`;
   wrapper.style.transformOrigin = 'top left';
@@ -2344,10 +2343,23 @@ function autoFitTable() {
   if (zoomDisplay) zoomDisplay.textContent = Math.round(finalScale * 100) + '%';
 }
 
-autoFitTable();
-window.addEventListener('resize', autoFitTable);
-</script>
+/* controles */
+document.getElementById('zoomIn').addEventListener('click', () => {
+  if (userZoom < 2) { userZoom += 0.05; applyZoom(); }
+});
+document.getElementById('zoomOut').addEventListener('click', () => {
+  if (userZoom > 0.5) { userZoom -= 0.05; applyZoom(); }
+});
+document.getElementById('zoomReset').addEventListener('click', () => {
+  userZoom = 1; applyZoom();
+});
+
+/* primera carga y redimensionados */
+applyZoom();
+window.addEventListener('resize', applyZoom);
+</script> 
 </body>
 </html>
+
 
 
