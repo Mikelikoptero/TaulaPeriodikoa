@@ -1147,6 +1147,33 @@ body{margin:0;font-family:Segoe UI, Roboto, Helvetica, Arial, sans-serif;backgro
   transform: translateY(0);
   box-shadow: 0 2px 6px rgba(58, 121, 94, 0.3);
 }
+  /* CORREGIDO: Estilo para el enlace del nombre del elemento - SIEMPRE BLANCO */
+.element-name-link {
+  color: #e6e6e6 !important;
+  text-decoration: none !important;
+  font-weight: 600;
+  cursor: pointer;
+  border-bottom: none !important;
+}
+
+.element-name-link:hover,
+.element-name-link:focus,
+.element-name-link:active,
+.element-name-link:visited {
+  color: #e6e6e6 !important;
+  text-decoration: none !important;
+  border-bottom: none !important;
+}
+
+/* Asegurar que el título principal siempre sea blanco */
+#titleMain {
+  color: #e6e6e6 !important;
+}
+
+#titleMain a {
+  color: #e6e6e6 !important;
+  text-decoration: none !important;
+}
 
 /* El resto del CSS responsive permanece igual... */
 </style>
@@ -2495,3 +2522,4 @@ window.addEventListener('resize', applyZoom);
 </script> 
 </body>
 </html>
+
