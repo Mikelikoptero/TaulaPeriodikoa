@@ -16,8 +16,9 @@
 </style>
 
 <style>
-:root{
-  --bg:#0a0a0a; /* Negro puro */
+/* Variables para modo claro / oscuro */
+:root {
+  --bg: #0a0a0a;
   --panel-bg: linear-gradient(180deg,#0a0a0a,#111111);
   --text: #e6e6e6;
   --text-muted: #cccccc;
@@ -28,8 +29,35 @@
   --shadow: 0 10px 30px rgba(0,0,0,0.8);
   --placeholder-border: rgba(58,121,94,0.3);
   --placeholder-text: rgba(204,204,204,0.6);
+  --cell-bg: rgba(30,30,30,0.8);
+  --cell-border: rgba(58,121,94,0.1);
+  --search-bg: linear-gradient(180deg,#111111,#0d0d0d);
+  --search-border: rgba(58,121,94,0.3);
+  --search-focus: rgba(58,121,94,0.6);
+  --zoom-bg: rgba(17,17,17,0.9);
+  --zoom-border: rgba(58,121,94,0.3);
+  --zoom-btn-bg: rgba(58,121,94,0.2);
+  --zoom-btn-hover: rgba(58,121,94,0.4);
+  --tooltip-bg: linear-gradient(180deg, #1a1a1a, #252525);
+  --tooltip-border: rgba(58,121,94,0.4);
+  --tooltip-text: #e6e6e6;
+  --group-period-bg: rgba(58,121,94,0.1);
+  --group-period-highlight: rgba(58,121,94,0.3);
+  --group-period-text: rgba(204,204,204,0.8);
+  --group-period-highlight-text: #e6e6e6;
+  --btn-bg: #0a0a0a;
+  --btn-border: #3A795E;
+  --btn-text: #cccccc;
+  --btn-hover-bg: #3A795E;
+  --btn-hover-text: #ffffff;
+  --btn-shadow: 0 2px 8px rgba(58,121,94,0.2);
+  --btn-hover-shadow: 0 4px 12px rgba(58,121,94,0.4);
+  --btn-active-shadow: 0 2px 6px rgba(58,121,94,0.3);
+  --link-color: #e6e6e6;
+  --link-hover: #e6e6e6;
 }
-  [data-theme="light"] {
+
+[data-theme="light"] {
   --bg: #f5f7fa;
   --panel-bg: linear-gradient(180deg,#ffffff,#f0f4f8);
   --text: #222;
@@ -41,6 +69,32 @@
   --shadow: 0 10px 30px rgba(0,0,0,0.1);
   --placeholder-border: rgba(58,121,94,0.25);
   --placeholder-text: rgba(68,68,68,0.7);
+  --cell-bg: rgba(240,240,240,0.9);
+  --cell-border: rgba(58,121,94,0.15);
+  --search-bg: linear-gradient(180deg,#ffffff,#f6f9fc);
+  --search-border: rgba(58,121,94,0.3);
+  --search-focus: rgba(58,121,94,0.6);
+  --zoom-bg: rgba(255,255,255,0.9);
+  --zoom-border: rgba(58,121,94,0.3);
+  --zoom-btn-bg: rgba(58,121,94,0.1);
+  --zoom-btn-hover: rgba(58,121,94,0.3);
+  --tooltip-bg: linear-gradient(180deg, #ffffff, #f0f4f8);
+  --tooltip-border: rgba(58,121,94,0.4);
+  --tooltip-text: #222;
+  --group-period-bg: rgba(58,121,94,0.1);
+  --group-period-highlight: rgba(58,121,94,0.3);
+  --group-period-text: rgba(68,68,68,0.8);
+  --group-period-highlight-text: #222;
+  --btn-bg: #ffffff;
+  --btn-border: #3A795E;
+  --btn-text: #445;
+  --btn-hover-bg: #3A795E;
+  --btn-hover-text: #ffffff;
+  --btn-shadow: 0 2px 8px rgba(58,121,94,0.1);
+  --btn-hover-shadow: 0 4px 12px rgba(58,121,94,0.2);
+  --btn-active-shadow: 0 2px 6px rgba(58,121,94,0.15);
+  --link-color: #222;
+  --link-hover: #222;
 }
 
 /* Aplicar variables globales */
@@ -50,17 +104,17 @@ body {
 }
 
 *{box-sizing:border-box}
-body{margin:0;font-family:Segoe UI, Roboto, Helvetica, Arial, sans-serif;background:var(--bg);color:#e6e6e6;overflow:hidden}
+body{margin:0;font-family:Segoe UI, Roboto, Helvetica, Arial, sans-serif;background:var(--bg);color:var(--text);overflow:hidden}
 .app{display:flex;height:100vh;width:100vw}
 /* left panel */
-.panel{width:var(--panel-width);min-width:var(--panel-width);background:linear-gradient(180deg,#0a0a0a,#111111);padding:20px;border-right:1px solid rgba(58,121,94,0.3);overflow:auto;flex-shrink:0}
+.panel{width:var(--panel-width);min-width:var(--panel-width);background:var(--panel-bg);padding:20px;border-right:1px solid var(--border);overflow:auto;flex-shrink:0}
 
 /* Título ONDDI AKADEMIA - CON FUENTE ARISTA 2.0 ALTERNATE */
 .onddi-title {
   font-family: 'Arista 2.0 Alternate', sans-serif;
   font-size: 32px;
   font-weight: 700;
-  color: #3A795E;
+  color: var(--accent);
   text-align: center;
   margin: 0 0 25px 0;
   padding: 0;
@@ -68,26 +122,25 @@ body{margin:0;font-family:Segoe UI, Roboto, Helvetica, Arial, sans-serif;backgro
   width: 100%;
 }
 
-.panel h1{margin:0 0 8px 0;font-size:18px;color:#e6e6e6}
-.panel p{margin:0 0 14px 0;opacity:0.8;color:#cccccc}
-.card{background:linear-gradient(180deg,#111111,#0d0d0d);padding:14px;border-radius:8px;border:1px solid rgba(58,121,94,0.2)}
+.panel h1{margin:0 0 8px 0;font-size:18px;color:var(--text)}
+.panel p{margin:0 0 14px 0;opacity:0.8;color:var(--text-muted)}
+.card{background:var(--card-bg);padding:14px;border-radius:8px;border:1px solid var(--border)}
 .big-square{width:84px;height:84px;border-radius:6px;display:flex;align-items:center;justify-content:center;font-weight:800;font-size:40px;margin-right:14px;color:#000 !important}
 .info-head{display:flex;align-items:center;justify-content:space-between}
 .info-left{display:flex;align-items:center}
 .info-rows{margin-top:12px}
 .info-rows div{margin:8px 0}
-/* MODIFICADO: Aumentar el ancho de las etiquetas para que quepa "Ionizazio Energia" */
-.info-rows b{display:inline-block;width:170px;color:#cccccc}
-.small-muted{font-size:12px;opacity:0.8;color:#aaaaaa}
-.footer{margin-top:12px;font-size:12px;opacity:0.7;color:#888888}
+.info-rows b{display:inline-block;width:170px;color:var(--text-muted)}
+.small-muted{font-size:12px;opacity:0.8;color:var(--text-muted)}
+.footer{margin-top:12px;font-size:12px;opacity:0.7;color:var(--text-muted)}
 
 /* NUEVO: Menú retráctil Baliabideak */
 .resources-toggle {
-  background: rgba(58,121,94,0.08);
+  background: var(--legend-bg);
   border-radius: 8px;
   padding: 12px;
   margin: 10px 0;
-  border: 1px solid rgba(58,121,94,0.2);
+  border: 1px solid var(--border);
   cursor: pointer;
   transition: all 0.3s ease;
 }
@@ -105,13 +158,13 @@ body{margin:0;font-family:Segoe UI, Roboto, Helvetica, Arial, sans-serif;backgro
 .resources-title {
   font-size: 16px;
   font-weight: 600;
-  color: #cccccc;
+  color: var(--text-muted);
   margin: 0;
 }
 
 .resources-icon {
   transition: transform 0.3s ease;
-  color: #3A795E;
+  color: var(--accent);
   font-weight: bold;
 }
 
@@ -138,11 +191,11 @@ body{margin:0;font-family:Segoe UI, Roboto, Helvetica, Arial, sans-serif;backgro
 
 /* Leyenda para bloques electrónicos - MODIFICADA: Con botón de toggle integrado */
 .elec-legend {
-  background: rgba(58,121,94,0.08);
+  background: var(--legend-bg);
   border-radius: 8px;
   padding: 12px;
   margin: 10px 0;
-  border: 1px solid rgba(58,121,94,0.2);
+  border: 1px solid var(--border);
   display: flex;
   flex-direction: column;
   gap: 8px;
@@ -158,17 +211,17 @@ body{margin:0;font-family:Segoe UI, Roboto, Helvetica, Arial, sans-serif;backgro
 .elec-legend-title {
   font-size: 14px;
   font-weight: 600;
-  color: #cccccc;
+  color: var(--text-muted);
   margin: 0;
 }
 
 /* NUEVO: Pestaña retráctil para propiedades */
 .properties-toggle {
-  background: rgba(58,121,94,0.08);
+  background: var(--legend-bg);
   border-radius: 8px;
   padding: 12px;
   margin: 10px 0;
-  border: 1px solid rgba(58,121,94,0.2);
+  border: 1px solid var(--border);
   cursor: pointer;
   transition: all 0.3s ease;
 }
@@ -186,13 +239,13 @@ body{margin:0;font-family:Segoe UI, Roboto, Helvetica, Arial, sans-serif;backgro
 .properties-title {
   font-size: 14px;
   font-weight: 600;
-  color: #cccccc;
+  color: var(--text-muted);
   margin: 0;
 }
 
 .properties-icon {
   transition: transform 0.3s ease;
-  color: #3A795E;
+  color: var(--accent);
   font-weight: bold;
 }
 
@@ -219,10 +272,10 @@ body{margin:0;font-family:Segoe UI, Roboto, Helvetica, Arial, sans-serif;backgro
 
 /* Leyenda para electronegatividad */
 .electroneg-legend {
-  background: rgba(58,121,94,0.08);
+  background: var(--legend-bg);
   border-radius: 8px;
   padding: 12px;
-  border: 1px solid rgba(58,121,94,0.2);
+  border: 1px solid var(--border);
   display: flex;
   flex-direction: column;
   gap: 8px;
@@ -244,7 +297,7 @@ body{margin:0;font-family:Segoe UI, Roboto, Helvetica, Arial, sans-serif;backgro
   cursor: help;
   font-size: 14px;
   font-weight: 600;
-  color: #cccccc;
+  color: var(--text-muted);
   margin: 0;
 }
 
@@ -254,7 +307,7 @@ body{margin:0;font-family:Segoe UI, Roboto, Helvetica, Arial, sans-serif;backgro
   border-radius: 50%;
   background: rgba(58,121,94,0.15);
   border: 1px solid rgba(58,121,94,0.3);
-  color: #cccccc;
+  color: var(--text-muted);
   font-size: 11px;
   font-weight: bold;
   display: flex;
@@ -267,7 +320,7 @@ body{margin:0;font-family:Segoe UI, Roboto, Helvetica, Arial, sans-serif;backgro
 .electroneg-legend-title:hover .title-tooltip {
   background: rgba(58,121,94,0.3);
   border-color: rgba(58,121,94,0.5);
-  color: #e6e6e6;
+  color: var(--text);
   transform: scale(1.1);
 }
 
@@ -275,14 +328,13 @@ body{margin:0;font-family:Segoe UI, Roboto, Helvetica, Arial, sans-serif;backgro
   position: absolute;
   top: 100%;
   left: 0;
-  background: linear-gradient(180deg, #1a1a1a, #252525);
-  border: 1px solid rgba(58,121,94,0.4);
+  background: var(--tooltip-bg);
+  border: 1px solid var(--tooltip-border);
   border-radius: 6px;
   padding: 8px 10px;
   font-size: 11px;
   line-height: 1.3;
-  color: #e6e6e6;
-  /* MODIFICADO: Ancho aumentado para que quepan los títulos en una línea */
+  color: var(--tooltip-text);
   width: 200px;
   box-shadow: 0 4px 15px rgba(0,0,0,0.5);
   z-index: 1000;
@@ -304,7 +356,6 @@ body{margin:0;font-family:Segoe UI, Roboto, Helvetica, Arial, sans-serif;backgro
   display: block;
   margin-bottom: 3px;
   font-size: 11px;
-  /* MODIFICADO: Asegurar que el texto fuerte no se rompa */
   white-space: nowrap;
 }
 
@@ -314,7 +365,7 @@ body{margin:0;font-family:Segoe UI, Roboto, Helvetica, Arial, sans-serif;backgro
   justify-content: space-between;
   margin-top: 8px;
   font-size: 11px;
-  color: #cccccc;
+  color: var(--text-muted);
 }
 
 .electroneg-gradient-bar {
@@ -327,10 +378,10 @@ body{margin:0;font-family:Segoe UI, Roboto, Helvetica, Arial, sans-serif;backgro
 
 /* Leyenda para radio atómico */
 .radius-legend {
-  background: rgba(58,121,94,0.08);
+  background: var(--legend-bg);
   border-radius: 8px;
   padding: 12px;
-  border: 1px solid rgba(58,121,94,0.2);
+  border: 1px solid var(--border);
   display: flex;
   flex-direction: column;
   gap: 8px;
@@ -352,14 +403,14 @@ body{margin:0;font-family:Segoe UI, Roboto, Helvetica, Arial, sans-serif;backgro
   cursor: help;
   font-size: 14px;
   font-weight: 600;
-  color: #cccccc;
+  color: var(--text-muted);
   margin: 0;
 }
 
 .radius-legend-title:hover .title-tooltip {
   background: rgba(58,121,94,0.3);
   border-color: rgba(58,121,94,0.5);
-  color: #e6e6e6;
+  color: var(--text);
   transform: scale(1.1);
 }
 
@@ -375,7 +426,7 @@ body{margin:0;font-family:Segoe UI, Roboto, Helvetica, Arial, sans-serif;backgro
   justify-content: space-between;
   margin-top: 8px;
   font-size: 11px;
-  color: #cccccc;
+  color: var(--text-muted);
 }
 
 .radius-gradient-bar {
@@ -388,10 +439,10 @@ body{margin:0;font-family:Segoe UI, Roboto, Helvetica, Arial, sans-serif;backgro
 
 /* NUEVO: Leyenda para Ionizazio Energia */
 .ionization-legend {
-  background: rgba(58,121,94,0.08);
+  background: var(--legend-bg);
   border-radius: 8px;
   padding: 12px;
-  border: 1px solid rgba(58,121,94,0.2);
+  border: 1px solid var(--border);
   display: flex;
   flex-direction: column;
   gap: 8px;
@@ -413,14 +464,14 @@ body{margin:0;font-family:Segoe UI, Roboto, Helvetica, Arial, sans-serif;backgro
   cursor: help;
   font-size: 14px;
   font-weight: 600;
-  color: #cccccc;
+  color: var(--text-muted);
   margin: 0;
 }
 
 .ionization-legend-title:hover .title-tooltip {
   background: rgba(58,121,94,0.3);
   border-color: rgba(58,121,94,0.5);
-  color: #e6e6e6;
+  color: var(--text);
   transform: scale(1.1);
 }
 
@@ -436,7 +487,7 @@ body{margin:0;font-family:Segoe UI, Roboto, Helvetica, Arial, sans-serif;backgro
   justify-content: space-between;
   margin-top: 8px;
   font-size: 11px;
-  color: #cccccc;
+  color: var(--text-muted);
 }
 
 .ionization-gradient-bar {
@@ -465,7 +516,7 @@ body{margin:0;font-family:Segoe UI, Roboto, Helvetica, Arial, sans-serif;backgro
   position: absolute;
   width: 18px;
   height: 18px;
-  background: #e6e6e6;
+  background: var(--text);
   border-radius: 50%;
   top: 3px;
   left: 3px;
@@ -473,7 +524,7 @@ body{margin:0;font-family:Segoe UI, Roboto, Helvetica, Arial, sans-serif;backgro
 }
 
 .elec-toggle-btn.active, .radius-toggle-btn.active, .electroneg-toggle-btn.active, .ionization-toggle-btn.active {
-  background: #3A795E;
+  background: var(--accent);
 }
 
 .elec-toggle-btn.active::before, .radius-toggle-btn.active::before, .electroneg-toggle-btn.active::before, .ionization-toggle-btn.active::before {
@@ -493,7 +544,7 @@ body{margin:0;font-family:Segoe UI, Roboto, Helvetica, Arial, sans-serif;backgro
   padding: 4px 8px;
   font-size: 14px;
   font-weight: 600;
-  color: #cccccc;
+  color: var(--text-muted);
   transition: all 0.3s ease;
 }
 
@@ -722,23 +773,23 @@ body{margin:0;font-family:Segoe UI, Roboto, Helvetica, Arial, sans-serif;backgro
 .search-box {
   width: 100%;
   padding: 14px 18px;
-  background: linear-gradient(180deg,#111111,#0d0d0d);
-  border: 1px solid rgba(58,121,94,0.3);
+  background: var(--search-bg);
+  border: 1px solid var(--search-border);
   border-radius: 10px;
-  color: #e6e6e6;
+  color: var(--text);
   font-size: 16px;
   outline: none;
   transition: all 0.3s ease;
 }
 
 .search-box:focus {
-  border-color: rgba(58,121,94,0.6);
+  border-color: var(--search-focus);
   box-shadow: 0 0 15px rgba(58,121,94,0.3);
   transform: translateY(-2px);
 }
 
 .search-box::placeholder {
-  color: rgba(204,204,204,0.6);
+  color: var(--text-muted);
   font-size: 15px;
 }
 
@@ -758,8 +809,8 @@ body{margin:0;font-family:Segoe UI, Roboto, Helvetica, Arial, sans-serif;backgro
   justify-content: center;
   font-size: 12px;
   font-weight: 600;
-  color: rgba(204,204,204,0.8);
-  background: rgba(58,121,94,0.1);
+  color: var(--group-period-text);
+  background: var(--group-period-bg);
   border-radius: 4px;
   padding: 4px;
   min-height: 30px;
@@ -767,8 +818,8 @@ body{margin:0;font-family:Segoe UI, Roboto, Helvetica, Arial, sans-serif;backgro
 }
 
 .group-label.highlighted {
-  background: rgba(58,121,94,0.3);
-  color: #e6e6e6;
+  background: var(--group-period-highlight);
+  color: var(--group-period-highlight-text);
   box-shadow: 0 0 10px rgba(58,121,94,0.5);
   transform: scale(1.05);
 }
@@ -779,8 +830,8 @@ body{margin:0;font-family:Segoe UI, Roboto, Helvetica, Arial, sans-serif;backgro
   justify-content: center;
   font-size: 12px;
   font-weight: 600;
-  color: rgba(204,204,204,0.8);
-  background: rgba(58,121,94,0.1);
+  color: var(--group-period-text);
+  background: var(--group-period-bg);
   border-radius: 4px;
   padding: 4px;
   min-width: 30px;
@@ -789,8 +840,8 @@ body{margin:0;font-family:Segoe UI, Roboto, Helvetica, Arial, sans-serif;backgro
 }
 
 .period-label.highlighted {
-  background: rgba(58,121,94,0.3);
-  color: #e6e6e6;
+  background: var(--group-period-highlight);
+  color: var(--group-period-highlight-text);
   box-shadow: 0 0 10px rgba(58,121,94,0.5);
   transform: scale(1.05);
 }
@@ -814,21 +865,21 @@ body{margin:0;font-family:Segoe UI, Roboto, Helvetica, Arial, sans-serif;backgro
   position: fixed;
   top: 20px;
   right: 20px;
-  background: rgba(17,17,17,0.9);
+  background: var(--zoom-bg);
   border-radius: 8px;
   padding: 10px;
   display: flex;
   gap: 8px;
   z-index: 1000;
   backdrop-filter: blur(5px);
-  border: 1px solid rgba(58,121,94,0.3);
+  border: 1px solid var(--zoom-border);
   box-shadow: 0 4px 12px rgba(0,0,0,0.5);
 }
 
 .zoom-btn {
-  background: rgba(58,121,94,0.2);
+  background: var(--zoom-btn-bg);
   border: none;
-  color: #e6e6e6;
+  color: var(--text);
   width: 36px;
   height: 36px;
   border-radius: 6px;
@@ -842,12 +893,12 @@ body{margin:0;font-family:Segoe UI, Roboto, Helvetica, Arial, sans-serif;backgro
 }
 
 .zoom-btn:hover {
-  background: rgba(58,121,94,0.4);
+  background: var(--zoom-btn-hover);
   transform: scale(1.05);
 }
 
 .zoom-display {
-  color: #e6e6e6;
+  color: var(--text);
   font-size: 14px;
   display: flex;
   align-items: center;
@@ -885,11 +936,11 @@ body{margin:0;font-family:Segoe UI, Roboto, Helvetica, Arial, sans-serif;backgro
   grid-template-columns:repeat(18, var(--cell-size));
   grid-auto-rows:var(--cell-size);
   gap:var(--gap-size);
-  background: var(--card-bg);
+  background:var(--card-bg);
   padding:14px;
   border-radius:8px;
-  box-shadow: var(--shadow);
-  border: 1px solid var(--border);
+  box-shadow:var(--shadow);
+  border:1px solid var(--border);
   position: relative;
 }
 
@@ -909,26 +960,26 @@ body{margin:0;font-family:Segoe UI, Roboto, Helvetica, Arial, sans-serif;backgro
   grid-template-columns:repeat(15, var(--cell-size));
   grid-auto-rows:var(--cell-size);
   gap:var(--gap-size);
-  background: var(--card-bg);
+  background:var(--card-bg);
   padding:14px;
   border-radius:8px;
-  box-shadow: var(--shadow);
-  border: 1px solid var(--border);
+  box-shadow:var(--shadow);
+  border:1px solid var(--border);
   /* Posición exacta donde empieza la columna 3 de la tabla principal */
   margin-left: calc(44px + 8px + (var(--cell-size) * 2) + (var(--gap-size) * 2));
   width: calc((var(--cell-size) * 15) + (var(--gap-size) * 14) + 28px);
 }
 
 .cell{
-  background:rgba(30,30,30,0.8);
+  background:var(--cell-bg);
   border-radius:6px;
   padding:6px;
-  color:#e6e6e6;
+  color:var(--text);
   display:flex;
   flex-direction:column;
   justify-content:space-between;
   font-size:12px;
-  border:1px solid rgba(58,121,94,0.1);
+  border:1px solid var(--cell-border);
   cursor:pointer;
   transition:all 0.3s ease;
   width:var(--cell-size);
@@ -971,7 +1022,7 @@ body{margin:0;font-family:Segoe UI, Roboto, Helvetica, Arial, sans-serif;backgro
   transform:scale(1.08);
   box-shadow:0 0 25px rgba(58,121,94,0.7);
   z-index:20;
-  border:2px solid #3A795E;
+  border:2px solid var(--accent);
 }
 .cell.search-nomatch{opacity:0.2;filter:grayscale(0.8);transform:scale(0.9)}
 .placeholder-cell{
@@ -981,7 +1032,7 @@ body{margin:0;font-family:Segoe UI, Roboto, Helvetica, Arial, sans-serif;backgro
   display:flex;
   align-items:center;
   justify-content:center;
-  color: var(--placeholder-text);
+  color:var(--placeholder-text);
   font-size:14px;
   font-weight:600;
   width:var(--cell-size);
@@ -1010,9 +1061,9 @@ body{margin:0;font-family:Segoe UI, Roboto, Helvetica, Arial, sans-serif;backgro
   grid-template-rows:repeat(2,1fr);
   gap:6px;
   padding:10px;
-  background:rgba(58,121,94,0.08);
+  background:var(--legend-bg);
   border-radius:6px;
-  border:1px solid rgba(58,121,94,0.2);
+  border:1px solid var(--border);
   font-size:13px;
 }
 .table-legend-item{
@@ -1024,7 +1075,7 @@ body{margin:0;font-family:Segoe UI, Roboto, Helvetica, Arial, sans-serif;backgro
   border-radius:4px;
   transition:all 0.3s ease;
   font-size:13px;
-  color:#cccccc;
+  color:var(--text-muted);
 }
 .table-legend-item:hover{
   background:rgba(58,121,94,0.15);
@@ -1043,9 +1094,9 @@ body{margin:0;font-family:Segoe UI, Roboto, Helvetica, Arial, sans-serif;backgro
 
 /* NUEVO: Botón 3D - MODIFICADO: Verde más claro */
 .btn-3d {
-  background: #0a0a0a !important;
-  border: 2px solid #3A795E !important; /* Verde más claro */
-  color: #cccccc !important; /* MODIFICADO: Texto en gris claro como las etiquetas de información */
+  background: var(--btn-bg) !important;
+  border: 2px solid var(--btn-border) !important;
+  color: var(--btn-text) !important;
   padding: 10px 16px !important;
   border-radius: 8px;
   font-size: 16px;
@@ -1056,29 +1107,29 @@ body{margin:0;font-family:Segoe UI, Roboto, Helvetica, Arial, sans-serif;backgro
   align-items: center;
   justify-content: center;
   gap: 8px;
-  margin: 0 !important; /* Cambiado: sin margen para que estén en el menú */
+  margin: 0 !important;
   width: 100% !important;
   min-width: auto !important;
-  box-shadow: 0 2px 8px rgba(92, 184, 92, 0.2); /* Verde más claro */
+  box-shadow: var(--btn-shadow);
 }
 
 .btn-3d:hover {
-  background: #3A795E !important; /* Fondo verde más claro al hover */
-  color: #ffffff !important; /* Texto blanco al hover */
+  background: var(--btn-hover-bg) !important;
+  color: var(--btn-hover-text) !important;
   transform: translateY(-2px);
-  box-shadow: 0 4px 12px rgba(92, 184, 92, 0.4); /* Verde más claro */
+  box-shadow: var(--btn-hover-shadow);
 }
 
 .btn-3d:active {
   transform: translateY(0);
-  box-shadow: 0 2px 6px rgba(58, 121, 94, 0.3); /* Verde más claro */
+  box-shadow: var(--btn-active-shadow);
 }
 
 /* NUEVO: Botón Balentziak - MODIFICADO: Verde más claro */
 .btn-balents {
-  background: #0a0a0a !important;
-  border: 2px solid #3A795E !important; /* Verde más claro */
-  color: #cccccc !important; /* MODIFICADO: Texto en gris claro como las etiquetas de información */
+  background: var(--btn-bg) !important;
+  border: 2px solid var(--btn-border) !important;
+  color: var(--btn-text) !important;
   padding: 10px 16px !important;
   border-radius: 8px;
   font-size: 16px;
@@ -1089,29 +1140,29 @@ body{margin:0;font-family:Segoe UI, Roboto, Helvetica, Arial, sans-serif;backgro
   align-items: center;
   justify-content: center;
   gap: 8px;
-  margin: 0 !important; /* Cambiado: sin margen para que estén en el menú */
+  margin: 0 !important;
   width: 100% !important;
   min-width: auto !important;
-  box-shadow: 0 2px 8px rgba(58, 121, 94, 0.2); /* Verde más claro */
+  box-shadow: var(--btn-shadow);
 }
 
 .btn-balents:hover {
-  background: #3A795E !important; /* Fondo verde más claro al hover */
-  color: #ffffff !important; /* Texto blanco al hover */
+  background: var(--btn-hover-bg) !important;
+  color: var(--btn-hover-text) !important;
   transform: translateY(-2px);
-  box-shadow: 0 4px 12px rgba(58, 121, 94, 0.4); /* Verde más claro */
+  box-shadow: var(--btn-hover-shadow);
 }
 
 .btn-balents:active {
   transform: translateY(0);
-  box-shadow: 0 2px 6px rgba(58, 121, 94, 0.3); /* Verde más claro */
+  box-shadow: var(--btn-active-shadow);
 }
 
 /* NUEVO: Botón Konposatu Inorganikoak */
 .btn-compounds {
-  background: #0a0a0a !important;
-  border: 2px solid #3A795E !important;
-  color: #cccccc !important;
+  background: var(--btn-bg) !important;
+  border: 2px solid var(--btn-border) !important;
+  color: var(--btn-text) !important;
   padding: 10px 16px !important;
   border-radius: 8px;
   font-size: 16px;
@@ -1125,26 +1176,26 @@ body{margin:0;font-family:Segoe UI, Roboto, Helvetica, Arial, sans-serif;backgro
   margin: 0 !important;
   width: 100% !important;
   min-width: auto !important;
-  box-shadow: 0 2px 8px rgba(58, 121, 94, 0.2);
+  box-shadow: var(--btn-shadow);
 }
 
 .btn-compounds:hover {
-  background: #3A795E !important;
-  color: #ffffff !important;
+  background: var(--btn-hover-bg) !important;
+  color: var(--btn-hover-text) !important;
   transform: translateY(-2px);
-  box-shadow: 0 4px 12px rgba(58, 121, 94, 0.4);
+  box-shadow: var(--btn-hover-shadow);
 }
 
 .btn-compounds:active {
   transform: translateY(0);
-  box-shadow: 0 2px 6px rgba(58, 121, 94, 0.3);
+  box-shadow: var(--btn-active-shadow);
 }
 
 /* NUEVO: Botón Kalkulu Tresnak */
 .btn-calc {
-  background: #0a0a0a !important;
-  border: 2px solid #3A795E !important;
-  color: #cccccc !important;
+  background: var(--btn-bg) !important;
+  border: 2px solid var(--btn-border) !important;
+  color: var(--btn-text) !important;
   padding: 10px 16px !important;
   border-radius: 8px;
   font-size: 16px;
@@ -1158,23 +1209,24 @@ body{margin:0;font-family:Segoe UI, Roboto, Helvetica, Arial, sans-serif;backgro
   margin: 0 !important;
   width: 100% !important;
   min-width: auto !important;
-  box-shadow: 0 2px 8px rgba(58, 121, 94, 0.2);
+  box-shadow: var(--btn-shadow);
 }
 
 .btn-calc:hover {
-  background: #3A795E !important;
-  color: #ffffff !important;
+  background: var(--btn-hover-bg) !important;
+  color: var(--btn-hover-text) !important;
   transform: translateY(-2px);
-  box-shadow: 0 4px 12px rgba(58, 121, 94, 0.4);
+  box-shadow: var(--btn-hover-shadow);
 }
 
 .btn-calc:active {
   transform: translateY(0);
-  box-shadow: 0 2px 6px rgba(58, 121, 94, 0.3);
+  box-shadow: var(--btn-active-shadow);
 }
-  /* CORREGIDO: Estilo para el enlace del nombre del elemento - SIEMPRE BLANCO */
+
+/* CORREGIDO: Estilo para el enlace del nombre del elemento - SIEMPRE BLANCO */
 .element-name-link {
-  color: #e6e6e6 !important;
+  color: var(--link-color) !important;
   text-decoration: none !important;
   font-weight: 600;
   cursor: pointer;
@@ -1185,18 +1237,18 @@ body{margin:0;font-family:Segoe UI, Roboto, Helvetica, Arial, sans-serif;backgro
 .element-name-link:focus,
 .element-name-link:active,
 .element-name-link:visited {
-  color: #e6e6e6 !important;
+  color: var(--link-hover) !important;
   text-decoration: none !important;
   border-bottom: none !important;
 }
 
 /* Asegurar que el título principal siempre sea blanco */
 #titleMain {
-  color: #e6e6e6 !important;
+  color: var(--text) !important;
 }
 
 #titleMain a {
-  color: #e6e6e6 !important;
+  color: var(--link-color) !important;
   text-decoration: none !important;
 }
 
@@ -1515,7 +1567,7 @@ body{margin:0;font-family:Segoe UI, Roboto, Helvetica, Arial, sans-serif;backgro
   <div class="zoom-display" id="zoomLevel">100%</div>
   <button class="zoom-btn" id="zoomIn">+</button>
   <button class="zoom-btn" id="zoomReset">↺</button>
-  <button class="zoom-btn" id="themeToggle" title="Kolorea Aldatu"></button>
+  <button class="zoom-btn" id="themeToggle" title="Kolorea Aldatu">🌓</button>
 </div>
 
 <script>
@@ -1648,7 +1700,7 @@ const actinides = [
  {z:96,sym:'Cm',name:'Kurio',mass:247,val:[3,4],config:'[Rn] 5f7 6d1 7s2',group:'actinide',x:10,radius:174,electroneg:1.28,ionization:581},
  {z:97,sym:'Bk',name:'Berkelio',mass:247,val:[3,4],config:'[Rn] 5f9 7s2',group:'actinide',x:11,radius:170,electroneg:1.3,ionization:601},
  {z:98,sym:'Cf',name:'Kalifornio',mass:251,val:[3],config:'[Rn] 5f10 7s2',group:'actinide',x:12,radius:186,electroneg:1.3,ionization:608},
- {z:99,sym:'Es',name:'Einsteinio',mass:252,val:[3],config:'[Rn] 5f11 7s2',group:'actinide',x:13,radius:186,electroneg:1.3,ionization:619},
+ {z:99,sym:'Es',name:'Einsteinio',mass:252,val:[3],config:'[Rn] 5f11 7s2',group:'actinide',x:13,radius=186,electroneg:1.3,ionization:619},
  {z:100,sym:'Fm',name:'Fermio',mass:257,val:[3],config:'[Rn] 5f12 7s2',group:'actinide',x:14,radius:0,electroneg:1.3,ionization:627},
  {z:101,sym:'Md',name:'Mendelevio',mass:258,val:[2,3],config:'[Rn] 5f13 7s2',group:'actinide',x:15,radius:0,electroneg:1.3,ionization:635},
  {z:102,sym:'No',name:'Nobelio',mass:259,val:[2,3],config:'[Rn] 5f14 7s2',group:'actinide',x:16,radius:0,electroneg:1.3,ionization:642},
@@ -2429,11 +2481,11 @@ function show(el, cell){
   
   // Casos especiales para nombres que necesitan sufijo _(elementua)
   if (elementName === 'Merkurio') {
-    wikipediaUrl = 'https://eu.wikipedia.org/wiki/Merkurio_(elementua)';
+    wikipediaUrl = 'https://eu.wikipedia.org/wiki/Merkurio_(elementua )';
   } else if (elementName === 'Zerio') {
-    wikipediaUrl = 'https://eu.wikipedia.org/wiki/Zerio_(elementua)';
+    wikipediaUrl = 'https://eu.wikipedia.org/wiki/Zerio_(elementua )';
   } else {
-    wikipediaUrl = `https://eu.wikipedia.org/wiki/${encodeURIComponent(elementName)}`;
+    wikipediaUrl = `https://eu.wikipedia.org/wiki/ ${encodeURIComponent(elementName)}`;
   }
   
   // Actualizar información básica con enlace
@@ -2478,22 +2530,22 @@ function show(el, cell){
 
 // Event listener para el botón 3D - SIMPLIFICADO: Redirige a la web externa
 btn3D.addEventListener('click', () => {
-  window.open('https://mikelikoptero.github.io/Orbitalak3D/', '_blank');
+  window.open('https://mikelikoptero.github.io/Orbitalak3D/ ', '_blank');
 });
 
 // Event listener para el botón Balentziak
 btnBalents.addEventListener('click', () => {
-  window.open('https://mikelikoptero.github.io/Balentzien-Taula/', '_blank');
+  window.open('https://mikelikoptero.github.io/Balentzien-Taula/ ', '_blank');
 });
 
 // NUEVO: Event listener para el botón Konposatu Inorganikoak
 btnCompounds.addEventListener('click', () => {
-  window.open('https://mikelikoptero.github.io/KonposatuInorganikoak/', '_blank');
+  window.open('https://mikelikoptero.github.io/KonposatuInorganikoak/ ', '_blank');
 });
 
 // NUEVO: Event listener para el botón Kalkulu Tresnak
 btnCalc.addEventListener('click', () => {
-  window.open('https://mikelikoptero.github.io/Kalkulagailua/', '_blank');
+  window.open('https://mikelikoptero.github.io/Kalkulagailua/ ', '_blank');
 });
 
 // initialize
@@ -2546,7 +2598,7 @@ document.getElementById('zoomReset').addEventListener('click', () => {
 applyZoom();
 window.addEventListener('resize', applyZoom);
 </script>
-  <script>
+<script>
 /* ---------- AUTO-TEMA + BOTÓN MANUAL ---------- */
 const themeToggle = document.getElementById('themeToggle');
 const html = document.documentElement;
@@ -2581,5 +2633,3 @@ themeToggle.addEventListener('click', () => {
 </script>
 </body>
 </html>
-
-
