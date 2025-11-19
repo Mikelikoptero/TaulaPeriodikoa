@@ -9,112 +9,33 @@
 <style>
 @font-face {
   font-family: 'Arista 2.0 Alternate';
-  src: url('https://raw.githubusercontent.com/Mikelikoptero/Taularako-argazkiak/main/AristaAlternate/Arista2.0Alternate.ttf') format('truetype');
+  src: url('https://raw.githubusercontent.com/Mikelikoptero/Taularako-argazkiak/main/AristaAlternate/Arista2.0Alternate.ttf ') format('truetype');
   font-weight: normal;
   font-style: normal;
 }
 </style>
 
 <style>
-/* Variables para modo claro / oscuro */
-:root {
-  --bg: #0a0a0a;
-  --panel-bg: linear-gradient(180deg,#0a0a0a,#111111);
-  --text: #e6e6e6;
-  --text-muted: #cccccc;
-  --border: rgba(58,121,94,0.3);
-  --accent: #3A795E;
-  --card-bg: linear-gradient(180deg,#111111,#0d0d0d);
-  --legend-bg: rgba(58,121,94,0.08);
-  --shadow: 0 10px 30px rgba(0,0,0,0.8);
-  --placeholder-border: rgba(58,121,94,0.3);
-  --placeholder-text: rgba(204,204,204,0.6);
-  --cell-bg: rgba(30,30,30,0.8);
-  --cell-border: rgba(58,121,94,0.1);
-  --search-bg: linear-gradient(180deg,#111111,#0d0d0d);
-  --search-border: rgba(58,121,94,0.3);
-  --search-focus: rgba(58,121,94,0.6);
-  --zoom-bg: rgba(17,17,17,0.9);
-  --zoom-border: rgba(58,121,94,0.3);
-  --zoom-btn-bg: rgba(58,121,94,0.2);
-  --zoom-btn-hover: rgba(58,121,94,0.4);
-  --tooltip-bg: linear-gradient(180deg, #1a1a1a, #252525);
-  --tooltip-border: rgba(58,121,94,0.4);
-  --tooltip-text: #e6e6e6;
-  --group-period-bg: rgba(58,121,94,0.1);
-  --group-period-highlight: rgba(58,121,94,0.3);
-  --group-period-text: rgba(204,204,204,0.8);
-  --group-period-highlight-text: #e6e6e6;
-  --btn-bg: #0a0a0a;
-  --btn-border: #3A795E;
-  --btn-text: #cccccc;
-  --btn-hover-bg: #3A795E;
-  --btn-hover-text: #ffffff;
-  --btn-shadow: 0 2px 8px rgba(58,121,94,0.2);
-  --btn-hover-shadow: 0 4px 12px rgba(58,121,94,0.4);
-  --btn-active-shadow: 0 2px 6px rgba(58,121,94,0.3);
-  --link-color: #e6e6e6;
-  --link-hover: #e6e6e6;
-}
-
-[data-theme="light"] {
-  --bg: #f5f7fa;
-  --panel-bg: linear-gradient(180deg,#ffffff,#f0f4f8);
-  --text: #222;
-  --text-muted: #445;
-  --border: rgba(58,121,94,0.25);
-  --accent: #3A795E;
-  --card-bg: linear-gradient(180deg,#ffffff,#f6f9fc);
-  --legend-bg: rgba(58,121,94,0.1);
-  --shadow: 0 10px 30px rgba(0,0,0,0.1);
-  --placeholder-border: rgba(58,121,94,0.25);
-  --placeholder-text: rgba(68,68,68,0.7);
-  --cell-bg: rgba(240,240,240,0.9);
-  --cell-border: rgba(58,121,94,0.15);
-  --search-bg: linear-gradient(180deg,#ffffff,#f6f9fc);
-  --search-border: rgba(58,121,94,0.3);
-  --search-focus: rgba(58,121,94,0.6);
-  --zoom-bg: rgba(255,255,255,0.9);
-  --zoom-border: rgba(58,121,94,0.3);
-  --zoom-btn-bg: rgba(58,121,94,0.1);
-  --zoom-btn-hover: rgba(58,121,94,0.3);
-  --tooltip-bg: linear-gradient(180deg, #ffffff, #f0f4f8);
-  --tooltip-border: rgba(58,121,94,0.4);
-  --tooltip-text: #222;
-  --group-period-bg: rgba(58,121,94,0.1);
-  --group-period-highlight: rgba(58,121,94,0.3);
-  --group-period-text: rgba(68,68,68,0.8);
-  --group-period-highlight-text: #222;
-  --btn-bg: #ffffff;
-  --btn-border: #3A795E;
-  --btn-text: #445;
-  --btn-hover-bg: #3A795E;
-  --btn-hover-text: #ffffff;
-  --btn-shadow: 0 2px 8px rgba(58,121,94,0.1);
-  --btn-hover-shadow: 0 4px 12px rgba(58,121,94,0.2);
-  --btn-active-shadow: 0 2px 6px rgba(58,121,94,0.15);
-  --link-color: #222;
-  --link-hover: #222;
-}
-
-/* Aplicar variables globales */
-body {
-  background: var(--bg);
-  color: var(--text);
+:root{
+  --panel-width:360px; 
+  --cell-size: 72px;
+  --gap-size: 6px;
+  --bg:#0a0a0a; /* Negro puro */
+  --zoom-level: 0.75;
 }
 
 *{box-sizing:border-box}
-body{margin:0;font-family:Segoe UI, Roboto, Helvetica, Arial, sans-serif;background:var(--bg);color:var(--text);overflow:hidden}
+body{margin:0;font-family:Segoe UI, Roboto, Helvetica, Arial, sans-serif;background:var(--bg);color:#e6e6e6;overflow:hidden}
 .app{display:flex;height:100vh;width:100vw}
 /* left panel */
-.panel{width:var(--panel-width);min-width:var(--panel-width);background:var(--panel-bg);padding:20px;border-right:1px solid var(--border);overflow:auto;flex-shrink:0}
+.panel{width:var(--panel-width);min-width:var(--panel-width);background:linear-gradient(180deg,#0a0a0a,#111111);padding:20px;border-right:1px solid rgba(58,121,94,0.3);overflow:auto;flex-shrink:0}
 
 /* Título ONDDI AKADEMIA - CON FUENTE ARISTA 2.0 ALTERNATE */
 .onddi-title {
   font-family: 'Arista 2.0 Alternate', sans-serif;
   font-size: 32px;
   font-weight: 700;
-  color: var(--accent);
+  color: #3A795E;
   text-align: center;
   margin: 0 0 25px 0;
   padding: 0;
@@ -122,25 +43,26 @@ body{margin:0;font-family:Segoe UI, Roboto, Helvetica, Arial, sans-serif;backgro
   width: 100%;
 }
 
-.panel h1{margin:0 0 8px 0;font-size:18px;color:var(--text)}
-.panel p{margin:0 0 14px 0;opacity:0.8;color:var(--text-muted)}
-.card{background:var(--card-bg);padding:14px;border-radius:8px;border:1px solid var(--border)}
+.panel h1{margin:0 0 8px 0;font-size:18px;color:#e6e6e6}
+.panel p{margin:0 0 14px 0;opacity:0.8;color:#cccccc}
+.card{background:linear-gradient(180deg,#111111,#0d0d0d);padding:14px;border-radius:8px;border:1px solid rgba(58,121,94,0.2)}
 .big-square{width:84px;height:84px;border-radius:6px;display:flex;align-items:center;justify-content:center;font-weight:800;font-size:40px;margin-right:14px;color:#000 !important}
 .info-head{display:flex;align-items:center;justify-content:space-between}
 .info-left{display:flex;align-items:center}
 .info-rows{margin-top:12px}
 .info-rows div{margin:8px 0}
-.info-rows b{display:inline-block;width:170px;color:var(--text-muted)}
-.small-muted{font-size:12px;opacity:0.8;color:var(--text-muted)}
-.footer{margin-top:12px;font-size:12px;opacity:0.7;color:var(--text-muted)}
+/* MODIFICADO: Aumentar el ancho de las etiquetas para que quepa "Ionizazio Energia" */
+.info-rows b{display:inline-block;width:170px;color:#cccccc}
+.small-muted{font-size:12px;opacity:0.8;color:#aaaaaa}
+.footer{margin-top:12px;font-size:12px;opacity:0.7;color:#888888}
 
 /* NUEVO: Menú retráctil Baliabideak */
 .resources-toggle {
-  background: var(--legend-bg);
+  background: rgba(58,121,94,0.08);
   border-radius: 8px;
   padding: 12px;
   margin: 10px 0;
-  border: 1px solid var(--border);
+  border: 1px solid rgba(58,121,94,0.2);
   cursor: pointer;
   transition: all 0.3s ease;
 }
@@ -158,13 +80,13 @@ body{margin:0;font-family:Segoe UI, Roboto, Helvetica, Arial, sans-serif;backgro
 .resources-title {
   font-size: 16px;
   font-weight: 600;
-  color: var(--text-muted);
+  color: #cccccc;
   margin: 0;
 }
 
 .resources-icon {
   transition: transform 0.3s ease;
-  color: var(--accent);
+  color: #3A795E;
   font-weight: bold;
 }
 
@@ -191,11 +113,11 @@ body{margin:0;font-family:Segoe UI, Roboto, Helvetica, Arial, sans-serif;backgro
 
 /* Leyenda para bloques electrónicos - MODIFICADA: Con botón de toggle integrado */
 .elec-legend {
-  background: var(--legend-bg);
+  background: rgba(58,121,94,0.08);
   border-radius: 8px;
   padding: 12px;
   margin: 10px 0;
-  border: 1px solid var(--border);
+  border: 1px solid rgba(58,121,94,0.2);
   display: flex;
   flex-direction: column;
   gap: 8px;
@@ -211,17 +133,17 @@ body{margin:0;font-family:Segoe UI, Roboto, Helvetica, Arial, sans-serif;backgro
 .elec-legend-title {
   font-size: 14px;
   font-weight: 600;
-  color: var(--text-muted);
+  color: #cccccc;
   margin: 0;
 }
 
 /* NUEVO: Pestaña retráctil para propiedades */
 .properties-toggle {
-  background: var(--legend-bg);
+  background: rgba(58,121,94,0.08);
   border-radius: 8px;
   padding: 12px;
   margin: 10px 0;
-  border: 1px solid var(--border);
+  border: 1px solid rgba(58,121,94,0.2);
   cursor: pointer;
   transition: all 0.3s ease;
 }
@@ -239,13 +161,13 @@ body{margin:0;font-family:Segoe UI, Roboto, Helvetica, Arial, sans-serif;backgro
 .properties-title {
   font-size: 14px;
   font-weight: 600;
-  color: var(--text-muted);
+  color: #cccccc;
   margin: 0;
 }
 
 .properties-icon {
   transition: transform 0.3s ease;
-  color: var(--accent);
+  color: #3A795E;
   font-weight: bold;
 }
 
@@ -272,10 +194,10 @@ body{margin:0;font-family:Segoe UI, Roboto, Helvetica, Arial, sans-serif;backgro
 
 /* Leyenda para electronegatividad */
 .electroneg-legend {
-  background: var(--legend-bg);
+  background: rgba(58,121,94,0.08);
   border-radius: 8px;
   padding: 12px;
-  border: 1px solid var(--border);
+  border: 1px solid rgba(58,121,94,0.2);
   display: flex;
   flex-direction: column;
   gap: 8px;
@@ -297,7 +219,7 @@ body{margin:0;font-family:Segoe UI, Roboto, Helvetica, Arial, sans-serif;backgro
   cursor: help;
   font-size: 14px;
   font-weight: 600;
-  color: var(--text-muted);
+  color: #cccccc;
   margin: 0;
 }
 
@@ -307,7 +229,7 @@ body{margin:0;font-family:Segoe UI, Roboto, Helvetica, Arial, sans-serif;backgro
   border-radius: 50%;
   background: rgba(58,121,94,0.15);
   border: 1px solid rgba(58,121,94,0.3);
-  color: var(--text-muted);
+  color: #cccccc;
   font-size: 11px;
   font-weight: bold;
   display: flex;
@@ -320,7 +242,7 @@ body{margin:0;font-family:Segoe UI, Roboto, Helvetica, Arial, sans-serif;backgro
 .electroneg-legend-title:hover .title-tooltip {
   background: rgba(58,121,94,0.3);
   border-color: rgba(58,121,94,0.5);
-  color: var(--text);
+  color: #e6e6e6;
   transform: scale(1.1);
 }
 
@@ -328,13 +250,14 @@ body{margin:0;font-family:Segoe UI, Roboto, Helvetica, Arial, sans-serif;backgro
   position: absolute;
   top: 100%;
   left: 0;
-  background: var(--tooltip-bg);
-  border: 1px solid var(--tooltip-border);
+  background: linear-gradient(180deg, #1a1a1a, #252525);
+  border: 1px solid rgba(58,121,94,0.4);
   border-radius: 6px;
   padding: 8px 10px;
   font-size: 11px;
   line-height: 1.3;
-  color: var(--tooltip-text);
+  color: #e6e6e6;
+  /* MODIFICADO: Ancho aumentado para que quepan los títulos en una línea */
   width: 200px;
   box-shadow: 0 4px 15px rgba(0,0,0,0.5);
   z-index: 1000;
@@ -356,6 +279,7 @@ body{margin:0;font-family:Segoe UI, Roboto, Helvetica, Arial, sans-serif;backgro
   display: block;
   margin-bottom: 3px;
   font-size: 11px;
+  /* MODIFICADO: Asegurar que el texto fuerte no se rompa */
   white-space: nowrap;
 }
 
@@ -365,7 +289,7 @@ body{margin:0;font-family:Segoe UI, Roboto, Helvetica, Arial, sans-serif;backgro
   justify-content: space-between;
   margin-top: 8px;
   font-size: 11px;
-  color: var(--text-muted);
+  color: #cccccc;
 }
 
 .electroneg-gradient-bar {
@@ -378,10 +302,10 @@ body{margin:0;font-family:Segoe UI, Roboto, Helvetica, Arial, sans-serif;backgro
 
 /* Leyenda para radio atómico */
 .radius-legend {
-  background: var(--legend-bg);
+  background: rgba(58,121,94,0.08);
   border-radius: 8px;
   padding: 12px;
-  border: 1px solid var(--border);
+  border: 1px solid rgba(58,121,94,0.2);
   display: flex;
   flex-direction: column;
   gap: 8px;
@@ -403,14 +327,14 @@ body{margin:0;font-family:Segoe UI, Roboto, Helvetica, Arial, sans-serif;backgro
   cursor: help;
   font-size: 14px;
   font-weight: 600;
-  color: var(--text-muted);
+  color: #cccccc;
   margin: 0;
 }
 
 .radius-legend-title:hover .title-tooltip {
   background: rgba(58,121,94,0.3);
   border-color: rgba(58,121,94,0.5);
-  color: var(--text);
+  color: #e6e6e6;
   transform: scale(1.1);
 }
 
@@ -426,7 +350,7 @@ body{margin:0;font-family:Segoe UI, Roboto, Helvetica, Arial, sans-serif;backgro
   justify-content: space-between;
   margin-top: 8px;
   font-size: 11px;
-  color: var(--text-muted);
+  color: #cccccc;
 }
 
 .radius-gradient-bar {
@@ -439,10 +363,10 @@ body{margin:0;font-family:Segoe UI, Roboto, Helvetica, Arial, sans-serif;backgro
 
 /* NUEVO: Leyenda para Ionizazio Energia */
 .ionization-legend {
-  background: var(--legend-bg);
+  background: rgba(58,121,94,0.08);
   border-radius: 8px;
   padding: 12px;
-  border: 1px solid var(--border);
+  border: 1px solid rgba(58,121,94,0.2);
   display: flex;
   flex-direction: column;
   gap: 8px;
@@ -464,14 +388,14 @@ body{margin:0;font-family:Segoe UI, Roboto, Helvetica, Arial, sans-serif;backgro
   cursor: help;
   font-size: 14px;
   font-weight: 600;
-  color: var(--text-muted);
+  color: #cccccc;
   margin: 0;
 }
 
 .ionization-legend-title:hover .title-tooltip {
   background: rgba(58,121,94,0.3);
   border-color: rgba(58,121,94,0.5);
-  color: var(--text);
+  color: #e6e6e6;
   transform: scale(1.1);
 }
 
@@ -487,7 +411,7 @@ body{margin:0;font-family:Segoe UI, Roboto, Helvetica, Arial, sans-serif;backgro
   justify-content: space-between;
   margin-top: 8px;
   font-size: 11px;
-  color: var(--text-muted);
+  color: #cccccc;
 }
 
 .ionization-gradient-bar {
@@ -516,7 +440,7 @@ body{margin:0;font-family:Segoe UI, Roboto, Helvetica, Arial, sans-serif;backgro
   position: absolute;
   width: 18px;
   height: 18px;
-  background: var(--text);
+  background: #e6e6e6;
   border-radius: 50%;
   top: 3px;
   left: 3px;
@@ -524,7 +448,7 @@ body{margin:0;font-family:Segoe UI, Roboto, Helvetica, Arial, sans-serif;backgro
 }
 
 .elec-toggle-btn.active, .radius-toggle-btn.active, .electroneg-toggle-btn.active, .ionization-toggle-btn.active {
-  background: var(--accent);
+  background: #3A795E;
 }
 
 .elec-toggle-btn.active::before, .radius-toggle-btn.active::before, .electroneg-toggle-btn.active::before, .ionization-toggle-btn.active::before {
@@ -544,7 +468,7 @@ body{margin:0;font-family:Segoe UI, Roboto, Helvetica, Arial, sans-serif;backgro
   padding: 4px 8px;
   font-size: 14px;
   font-weight: 600;
-  color: var(--text-muted);
+  color: #cccccc;
   transition: all 0.3s ease;
 }
 
@@ -773,23 +697,23 @@ body{margin:0;font-family:Segoe UI, Roboto, Helvetica, Arial, sans-serif;backgro
 .search-box {
   width: 100%;
   padding: 14px 18px;
-  background: var(--search-bg);
-  border: 1px solid var(--search-border);
+  background: linear-gradient(180deg,#111111,#0d0d0d);
+  border: 1px solid rgba(58,121,94,0.3);
   border-radius: 10px;
-  color: var(--text);
+  color: #e6e6e6;
   font-size: 16px;
   outline: none;
   transition: all 0.3s ease;
 }
 
 .search-box:focus {
-  border-color: var(--search-focus);
+  border-color: rgba(58,121,94,0.6);
   box-shadow: 0 0 15px rgba(58,121,94,0.3);
   transform: translateY(-2px);
 }
 
 .search-box::placeholder {
-  color: var(--text-muted);
+  color: rgba(204,204,204,0.6);
   font-size: 15px;
 }
 
@@ -809,8 +733,8 @@ body{margin:0;font-family:Segoe UI, Roboto, Helvetica, Arial, sans-serif;backgro
   justify-content: center;
   font-size: 12px;
   font-weight: 600;
-  color: var(--group-period-text);
-  background: var(--group-period-bg);
+  color: rgba(204,204,204,0.8);
+  background: rgba(58,121,94,0.1);
   border-radius: 4px;
   padding: 4px;
   min-height: 30px;
@@ -818,8 +742,8 @@ body{margin:0;font-family:Segoe UI, Roboto, Helvetica, Arial, sans-serif;backgro
 }
 
 .group-label.highlighted {
-  background: var(--group-period-highlight);
-  color: var(--group-period-highlight-text);
+  background: rgba(58,121,94,0.3);
+  color: #e6e6e6;
   box-shadow: 0 0 10px rgba(58,121,94,0.5);
   transform: scale(1.05);
 }
@@ -830,8 +754,8 @@ body{margin:0;font-family:Segoe UI, Roboto, Helvetica, Arial, sans-serif;backgro
   justify-content: center;
   font-size: 12px;
   font-weight: 600;
-  color: var(--group-period-text);
-  background: var(--group-period-bg);
+  color: rgba(204,204,204,0.8);
+  background: rgba(58,121,94,0.1);
   border-radius: 4px;
   padding: 4px;
   min-width: 30px;
@@ -840,8 +764,8 @@ body{margin:0;font-family:Segoe UI, Roboto, Helvetica, Arial, sans-serif;backgro
 }
 
 .period-label.highlighted {
-  background: var(--group-period-highlight);
-  color: var(--group-period-highlight-text);
+  background: rgba(58,121,94,0.3);
+  color: #e6e6e6;
   box-shadow: 0 0 10px rgba(58,121,94,0.5);
   transform: scale(1.05);
 }
@@ -865,21 +789,21 @@ body{margin:0;font-family:Segoe UI, Roboto, Helvetica, Arial, sans-serif;backgro
   position: fixed;
   top: 20px;
   right: 20px;
-  background: var(--zoom-bg);
+  background: rgba(17,17,17,0.9);
   border-radius: 8px;
   padding: 10px;
   display: flex;
   gap: 8px;
   z-index: 1000;
   backdrop-filter: blur(5px);
-  border: 1px solid var(--zoom-border);
+  border: 1px solid rgba(58,121,94,0.3);
   box-shadow: 0 4px 12px rgba(0,0,0,0.5);
 }
 
 .zoom-btn {
-  background: var(--zoom-btn-bg);
+  background: rgba(58,121,94,0.2);
   border: none;
-  color: var(--text);
+  color: #e6e6e6;
   width: 36px;
   height: 36px;
   border-radius: 6px;
@@ -893,12 +817,12 @@ body{margin:0;font-family:Segoe UI, Roboto, Helvetica, Arial, sans-serif;backgro
 }
 
 .zoom-btn:hover {
-  background: var(--zoom-btn-hover);
+  background: rgba(58,121,94,0.4);
   transform: scale(1.05);
 }
 
 .zoom-display {
-  color: var(--text);
+  color: #e6e6e6;
   font-size: 14px;
   display: flex;
   align-items: center;
@@ -936,11 +860,11 @@ body{margin:0;font-family:Segoe UI, Roboto, Helvetica, Arial, sans-serif;backgro
   grid-template-columns:repeat(18, var(--cell-size));
   grid-auto-rows:var(--cell-size);
   gap:var(--gap-size);
-  background:var(--card-bg);
+  background:linear-gradient(180deg,#111111,#151515);
   padding:14px;
   border-radius:8px;
-  box-shadow:var(--shadow);
-  border:1px solid var(--border);
+  box-shadow:0 10px 30px rgba(0,0,0,0.8);
+  border:1px solid rgba(58,121,94,0.2);
   position: relative;
 }
 
@@ -960,26 +884,26 @@ body{margin:0;font-family:Segoe UI, Roboto, Helvetica, Arial, sans-serif;backgro
   grid-template-columns:repeat(15, var(--cell-size));
   grid-auto-rows:var(--cell-size);
   gap:var(--gap-size);
-  background:var(--card-bg);
+  background:linear-gradient(180deg,#111111,#151515);
   padding:14px;
   border-radius:8px;
-  box-shadow:var(--shadow);
-  border:1px solid var(--border);
+  box-shadow:0 10px 30px rgba(0,0,0,0.8);
+  border:1px solid rgba(58,121,94,0.2);
   /* Posición exacta donde empieza la columna 3 de la tabla principal */
   margin-left: calc(44px + 8px + (var(--cell-size) * 2) + (var(--gap-size) * 2));
   width: calc((var(--cell-size) * 15) + (var(--gap-size) * 14) + 28px);
 }
 
 .cell{
-  background:var(--cell-bg);
+  background:rgba(30,30,30,0.8);
   border-radius:6px;
   padding:6px;
-  color:var(--text);
+  color:#e6e6e6;
   display:flex;
   flex-direction:column;
   justify-content:space-between;
   font-size:12px;
-  border:1px solid var(--cell-border);
+  border:1px solid rgba(58,121,94,0.1);
   cursor:pointer;
   transition:all 0.3s ease;
   width:var(--cell-size);
@@ -1022,17 +946,17 @@ body{margin:0;font-family:Segoe UI, Roboto, Helvetica, Arial, sans-serif;backgro
   transform:scale(1.08);
   box-shadow:0 0 25px rgba(58,121,94,0.7);
   z-index:20;
-  border:2px solid var(--accent);
+  border:2px solid #3A795E;
 }
 .cell.search-nomatch{opacity:0.2;filter:grayscale(0.8);transform:scale(0.9)}
 .placeholder-cell{
   background:transparent;
-  border: 2px dashed var(--placeholder-border);
+  border:2px dashed rgba(58,121,94,0.3);
   border-radius:6px;
   display:flex;
   align-items:center;
   justify-content:center;
-  color:var(--placeholder-text);
+  color:rgba(204,204,204,0.6);
   font-size:14px;
   font-weight:600;
   width:var(--cell-size);
@@ -1061,9 +985,9 @@ body{margin:0;font-family:Segoe UI, Roboto, Helvetica, Arial, sans-serif;backgro
   grid-template-rows:repeat(2,1fr);
   gap:6px;
   padding:10px;
-  background:var(--legend-bg);
+  background:rgba(58,121,94,0.08);
   border-radius:6px;
-  border:1px solid var(--border);
+  border:1px solid rgba(58,121,94,0.2);
   font-size:13px;
 }
 .table-legend-item{
@@ -1075,7 +999,7 @@ body{margin:0;font-family:Segoe UI, Roboto, Helvetica, Arial, sans-serif;backgro
   border-radius:4px;
   transition:all 0.3s ease;
   font-size:13px;
-  color:var(--text-muted);
+  color:#cccccc;
 }
 .table-legend-item:hover{
   background:rgba(58,121,94,0.15);
@@ -1094,9 +1018,9 @@ body{margin:0;font-family:Segoe UI, Roboto, Helvetica, Arial, sans-serif;backgro
 
 /* NUEVO: Botón 3D - MODIFICADO: Verde más claro */
 .btn-3d {
-  background: var(--btn-bg) !important;
-  border: 2px solid var(--btn-border) !important;
-  color: var(--btn-text) !important;
+  background: #0a0a0a !important;
+  border: 2px solid #3A795E !important; /* Verde más claro */
+  color: #cccccc !important; /* MODIFICADO: Texto en gris claro como las etiquetas de información */
   padding: 10px 16px !important;
   border-radius: 8px;
   font-size: 16px;
@@ -1107,29 +1031,29 @@ body{margin:0;font-family:Segoe UI, Roboto, Helvetica, Arial, sans-serif;backgro
   align-items: center;
   justify-content: center;
   gap: 8px;
-  margin: 0 !important;
+  margin: 0 !important; /* Cambiado: sin margen para que estén en el menú */
   width: 100% !important;
   min-width: auto !important;
-  box-shadow: var(--btn-shadow);
+  box-shadow: 0 2px 8px rgba(92, 184, 92, 0.2); /* Verde más claro */
 }
 
 .btn-3d:hover {
-  background: var(--btn-hover-bg) !important;
-  color: var(--btn-hover-text) !important;
+  background: #3A795E !important; /* Fondo verde más claro al hover */
+  color: #ffffff !important; /* Texto blanco al hover */
   transform: translateY(-2px);
-  box-shadow: var(--btn-hover-shadow);
+  box-shadow: 0 4px 12px rgba(92, 184, 92, 0.4); /* Verde más claro */
 }
 
 .btn-3d:active {
   transform: translateY(0);
-  box-shadow: var(--btn-active-shadow);
+  box-shadow: 0 2px 6px rgba(58, 121, 94, 0.3); /* Verde más claro */
 }
 
 /* NUEVO: Botón Balentziak - MODIFICADO: Verde más claro */
 .btn-balents {
-  background: var(--btn-bg) !important;
-  border: 2px solid var(--btn-border) !important;
-  color: var(--btn-text) !important;
+  background: #0a0a0a !important;
+  border: 2px solid #3A795E !important; /* Verde más claro */
+  color: #cccccc !important; /* MODIFICADO: Texto en gris claro como las etiquetas de información */
   padding: 10px 16px !important;
   border-radius: 8px;
   font-size: 16px;
@@ -1140,29 +1064,29 @@ body{margin:0;font-family:Segoe UI, Roboto, Helvetica, Arial, sans-serif;backgro
   align-items: center;
   justify-content: center;
   gap: 8px;
-  margin: 0 !important;
+  margin: 0 !important; /* Cambiado: sin margen para que estén en el menú */
   width: 100% !important;
   min-width: auto !important;
-  box-shadow: var(--btn-shadow);
+  box-shadow: 0 2px 8px rgba(58, 121, 94, 0.2); /* Verde más claro */
 }
 
 .btn-balents:hover {
-  background: var(--btn-hover-bg) !important;
-  color: var(--btn-hover-text) !important;
+  background: #3A795E !important; /* Fondo verde más claro al hover */
+  color: #ffffff !important; /* Texto blanco al hover */
   transform: translateY(-2px);
-  box-shadow: var(--btn-hover-shadow);
+  box-shadow: 0 4px 12px rgba(58, 121, 94, 0.4); /* Verde más claro */
 }
 
 .btn-balents:active {
   transform: translateY(0);
-  box-shadow: var(--btn-active-shadow);
+  box-shadow: 0 2px 6px rgba(58, 121, 94, 0.3); /* Verde más claro */
 }
 
 /* NUEVO: Botón Konposatu Inorganikoak */
 .btn-compounds {
-  background: var(--btn-bg) !important;
-  border: 2px solid var(--btn-border) !important;
-  color: var(--btn-text) !important;
+  background: #0a0a0a !important;
+  border: 2px solid #3A795E !important;
+  color: #cccccc !important;
   padding: 10px 16px !important;
   border-radius: 8px;
   font-size: 16px;
@@ -1176,26 +1100,26 @@ body{margin:0;font-family:Segoe UI, Roboto, Helvetica, Arial, sans-serif;backgro
   margin: 0 !important;
   width: 100% !important;
   min-width: auto !important;
-  box-shadow: var(--btn-shadow);
+  box-shadow: 0 2px 8px rgba(58, 121, 94, 0.2);
 }
 
 .btn-compounds:hover {
-  background: var(--btn-hover-bg) !important;
-  color: var(--btn-hover-text) !important;
+  background: #3A795E !important;
+  color: #ffffff !important;
   transform: translateY(-2px);
-  box-shadow: var(--btn-hover-shadow);
+  box-shadow: 0 4px 12px rgba(58, 121, 94, 0.4);
 }
 
 .btn-compounds:active {
   transform: translateY(0);
-  box-shadow: var(--btn-active-shadow);
+  box-shadow: 0 2px 6px rgba(58, 121, 94, 0.3);
 }
 
 /* NUEVO: Botón Kalkulu Tresnak */
 .btn-calc {
-  background: var(--btn-bg) !important;
-  border: 2px solid var(--btn-border) !important;
-  color: var(--btn-text) !important;
+  background: #0a0a0a !important;
+  border: 2px solid #3A795E !important;
+  color: #cccccc !important;
   padding: 10px 16px !important;
   border-radius: 8px;
   font-size: 16px;
@@ -1209,24 +1133,23 @@ body{margin:0;font-family:Segoe UI, Roboto, Helvetica, Arial, sans-serif;backgro
   margin: 0 !important;
   width: 100% !important;
   min-width: auto !important;
-  box-shadow: var(--btn-shadow);
+  box-shadow: 0 2px 8px rgba(58, 121, 94, 0.2);
 }
 
 .btn-calc:hover {
-  background: var(--btn-hover-bg) !important;
-  color: var(--btn-hover-text) !important;
+  background: #3A795E !important;
+  color: #ffffff !important;
   transform: translateY(-2px);
-  box-shadow: var(--btn-hover-shadow);
+  box-shadow: 0 4px 12px rgba(58, 121, 94, 0.4);
 }
 
 .btn-calc:active {
   transform: translateY(0);
-  box-shadow: var(--btn-active-shadow);
+  box-shadow: 0 2px 6px rgba(58, 121, 94, 0.3);
 }
-
-/* CORREGIDO: Estilo para el enlace del nombre del elemento - SIEMPRE BLANCO */
+  /* CORREGIDO: Estilo para el enlace del nombre del elemento - SIEMPRE BLANCO */
 .element-name-link {
-  color: var(--link-color) !important;
+  color: #e6e6e6 !important;
   text-decoration: none !important;
   font-weight: 600;
   cursor: pointer;
@@ -1237,18 +1160,18 @@ body{margin:0;font-family:Segoe UI, Roboto, Helvetica, Arial, sans-serif;backgro
 .element-name-link:focus,
 .element-name-link:active,
 .element-name-link:visited {
-  color: var(--link-hover) !important;
+  color: #e6e6e6 !important;
   text-decoration: none !important;
   border-bottom: none !important;
 }
 
 /* Asegurar que el título principal siempre sea blanco */
 #titleMain {
-  color: var(--text) !important;
+  color: #e6e6e6 !important;
 }
 
 #titleMain a {
-  color: var(--link-color) !important;
+  color: #e6e6e6 !important;
   text-decoration: none !important;
 }
 
@@ -1567,7 +1490,6 @@ body{margin:0;font-family:Segoe UI, Roboto, Helvetica, Arial, sans-serif;backgro
   <div class="zoom-display" id="zoomLevel">100%</div>
   <button class="zoom-btn" id="zoomIn">+</button>
   <button class="zoom-btn" id="zoomReset">↺</button>
-  <button class="zoom-btn" id="themeToggle" title="Kolorea Aldatu">🌓</button>
 </div>
 
 <script>
@@ -1700,7 +1622,7 @@ const actinides = [
  {z:96,sym:'Cm',name:'Kurio',mass:247,val:[3,4],config:'[Rn] 5f7 6d1 7s2',group:'actinide',x:10,radius:174,electroneg:1.28,ionization:581},
  {z:97,sym:'Bk',name:'Berkelio',mass:247,val:[3,4],config:'[Rn] 5f9 7s2',group:'actinide',x:11,radius:170,electroneg:1.3,ionization:601},
  {z:98,sym:'Cf',name:'Kalifornio',mass:251,val:[3],config:'[Rn] 5f10 7s2',group:'actinide',x:12,radius:186,electroneg:1.3,ionization:608},
- {z:99,sym:'Es',name:'Einsteinio',mass:252,val:[3],config:'[Rn] 5f11 7s2',group:'actinide',x:13,radius=186,electroneg:1.3,ionization:619},
+ {z:99,sym:'Es',name:'Einsteinio',mass:252,val:[3],config:'[Rn] 5f11 7s2',group:'actinide',x:13,radius:186,electroneg:1.3,ionization:619},
  {z:100,sym:'Fm',name:'Fermio',mass:257,val:[3],config:'[Rn] 5f12 7s2',group:'actinide',x:14,radius:0,electroneg:1.3,ionization:627},
  {z:101,sym:'Md',name:'Mendelevio',mass:258,val:[2,3],config:'[Rn] 5f13 7s2',group:'actinide',x:15,radius:0,electroneg:1.3,ionization:635},
  {z:102,sym:'No',name:'Nobelio',mass:259,val:[2,3],config:'[Rn] 5f14 7s2',group:'actinide',x:16,radius:0,electroneg:1.3,ionization:642},
@@ -2597,39 +2519,6 @@ document.getElementById('zoomReset').addEventListener('click', () => {
 /* primera carga y redimensionados */
 applyZoom();
 window.addEventListener('resize', applyZoom);
-</script>
-<script>
-/* ---------- AUTO-TEMA + BOTÓN MANUAL ---------- */
-const themeToggle = document.getElementById('themeToggle');
-const html = document.documentElement;
-
-// Detectar preferencia del sistema
-const prefersDark = window.matchMedia('(prefers-color-scheme: dark)');
-
-// Aplicar tema
-function applyTheme(dark) {
-  html.setAttribute('data-theme', dark ? 'dark' : 'light');
-  localStorage.setItem('theme', dark ? 'dark' : 'light');
-}
-
-// Estado inicial
-const saved = localStorage.getItem('theme');
-if (saved) {
-  applyTheme(saved === 'dark');
-} else {
-  applyTheme(prefersDark.matches);
-}
-
-// Escuchar cambios del sistema
-prefersDark.addEventListener('change', e => {
-  if (!localStorage.getItem('theme')) applyTheme(e.matches);
-});
-
-// Botón manual
-themeToggle.addEventListener('click', () => {
-  const isDark = html.getAttribute('data-theme') !== 'light';
-  applyTheme(!isDark);
-});
-</script>
+</script> 
 </body>
 </html>
