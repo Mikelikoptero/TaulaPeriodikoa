@@ -17,11 +17,36 @@
 
 <style>
 :root{
-  --panel-width:360px; 
-  --cell-size: 72px;
-  --gap-size: 6px;
   --bg:#0a0a0a; /* Negro puro */
-  --zoom-level: 0.75;
+  --panel-bg: linear-gradient(180deg,#0a0a0a,#111111);
+  --text: #e6e6e6;
+  --text-muted: #cccccc;
+  --border: rgba(58,121,94,0.3);
+  --accent: #3A795E;
+  --card-bg: linear-gradient(180deg,#111111,#0d0d0d);
+  --legend-bg: rgba(58,121,94,0.08);
+  --shadow: 0 10px 30px rgba(0,0,0,0.8);
+  --placeholder-border: rgba(58,121,94,0.3);
+  --placeholder-text: rgba(204,204,204,0.6);
+}
+  [data-theme="light"] {
+  --bg: #f5f7fa;
+  --panel-bg: linear-gradient(180deg,#ffffff,#f0f4f8);
+  --text: #222;
+  --text-muted: #445;
+  --border: rgba(58,121,94,0.25);
+  --accent: #3A795E;
+  --card-bg: linear-gradient(180deg,#ffffff,#f6f9fc);
+  --legend-bg: rgba(58,121,94,0.1);
+  --shadow: 0 10px 30px rgba(0,0,0,0.1);
+  --placeholder-border: rgba(58,121,94,0.25);
+  --placeholder-text: rgba(68,68,68,0.7);
+}
+
+/* Aplicar variables globales */
+body {
+  background: var(--bg);
+  color: var(--text);
 }
 
 *{box-sizing:border-box}
@@ -860,11 +885,11 @@ body{margin:0;font-family:Segoe UI, Roboto, Helvetica, Arial, sans-serif;backgro
   grid-template-columns:repeat(18, var(--cell-size));
   grid-auto-rows:var(--cell-size);
   gap:var(--gap-size);
-  background:linear-gradient(180deg,#111111,#151515);
+  background: var(--card-bg);
   padding:14px;
   border-radius:8px;
-  box-shadow:0 10px 30px rgba(0,0,0,0.8);
-  border:1px solid rgba(58,121,94,0.2);
+  box-shadow: var(--shadow);
+  border: 1px solid var(--border);
   position: relative;
 }
 
@@ -884,11 +909,11 @@ body{margin:0;font-family:Segoe UI, Roboto, Helvetica, Arial, sans-serif;backgro
   grid-template-columns:repeat(15, var(--cell-size));
   grid-auto-rows:var(--cell-size);
   gap:var(--gap-size);
-  background:linear-gradient(180deg,#111111,#151515);
+  background: var(--card-bg);
   padding:14px;
   border-radius:8px;
-  box-shadow:0 10px 30px rgba(0,0,0,0.8);
-  border:1px solid rgba(58,121,94,0.2);
+  box-shadow: var(--shadow);
+  border: 1px solid var(--border);
   /* Posición exacta donde empieza la columna 3 de la tabla principal */
   margin-left: calc(44px + 8px + (var(--cell-size) * 2) + (var(--gap-size) * 2));
   width: calc((var(--cell-size) * 15) + (var(--gap-size) * 14) + 28px);
@@ -951,12 +976,12 @@ body{margin:0;font-family:Segoe UI, Roboto, Helvetica, Arial, sans-serif;backgro
 .cell.search-nomatch{opacity:0.2;filter:grayscale(0.8);transform:scale(0.9)}
 .placeholder-cell{
   background:transparent;
-  border:2px dashed rgba(58,121,94,0.3);
+  border: 2px dashed var(--placeholder-border);
   border-radius:6px;
   display:flex;
   align-items:center;
   justify-content:center;
-  color:rgba(204,204,204,0.6);
+  color: var(--placeholder-text);
   font-size:14px;
   font-weight:600;
   width:var(--cell-size);
@@ -1490,6 +1515,7 @@ body{margin:0;font-family:Segoe UI, Roboto, Helvetica, Arial, sans-serif;backgro
   <div class="zoom-display" id="zoomLevel">100%</div>
   <button class="zoom-btn" id="zoomIn">+</button>
   <button class="zoom-btn" id="zoomReset">↺</button>
+  <button class="zoom-btn" id="themeToggle" title="Kolorea Aldatu"></button>
 </div>
 
 <script>
@@ -2519,7 +2545,41 @@ document.getElementById('zoomReset').addEventListener('click', () => {
 /* primera carga y redimensionados */
 applyZoom();
 window.addEventListener('resize', applyZoom);
-</script> 
+</script>
+  <script>
+/* ---------- AUTO-TEMA + BOTÓN MANUAL ---------- */
+const themeToggle = document.getElementById('themeToggle');
+const html = document.documentElement;
+
+// Detectar preferencia del sistema
+const prefersDark = window.matchMedia('(prefers-color-scheme: dark)');
+
+// Aplicar tema
+function applyTheme(dark) {
+  html.setAttribute('data-theme', dark ? 'dark' : 'light');
+  localStorage.setItem('theme', dark ? 'dark' : 'light');
+}
+
+// Estado inicial
+const saved = localStorage.getItem('theme');
+if (saved) {
+  applyTheme(saved === 'dark');
+} else {
+  applyTheme(prefersDark.matches);
+}
+
+// Escuchar cambios del sistema
+prefersDark.addEventListener('change', e => {
+  if (!localStorage.getItem('theme')) applyTheme(e.matches);
+});
+
+// Botón manual
+themeToggle.addEventListener('click', () => {
+  const isDark = html.getAttribute('data-theme') !== 'light';
+  applyTheme(!isDark);
+});
+</script>
 </body>
 </html>
+
 
